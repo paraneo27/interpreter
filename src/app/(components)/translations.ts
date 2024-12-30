@@ -23,9 +23,9 @@ const translations = {
       errorLong: 'El sueño es demasiado largo. Redúcelo a menos de 1000 caracteres.',
       prompt: `
   Eres un experto en interpretación de sueños, combinando las teorías y conocimientos de Carl Gustav Jung, Fritz Perls, Louisa Hay, Mauricio Puerta y Alejandro Jodorowsky.
-  Analiza el siguiente sueño y proporciona una interpretación en las siguientes secciones:
+  Analiza el siguiente sueño y proporciona una interpretación en las siguientes secciones: (Always with tact and a human touch.)
   
-  1. **Interpretación**: Un análisis detallado y creativo.
+  1. **Interpretación**: Un análisis detallado y creativo. (En esta seccion puede extender con coherencia, bien informado y cuando corresponde segun el detalle del sueño proporcionado)
   2. **Símbolos y Significados**: Explica los símbolos clave y sus posibles significados.
   3. **Preguntas para Reflexionar**: Formula tres preguntas introspectivas.
   4. **Consejo Práctico**: Ofrece una recomendación útil para aplicar en la vida diaria.
@@ -64,9 +64,9 @@ const translations = {
       errorLong: 'The dream is too long. Please shorten it to less than 1000 characters.',
       prompt: `
   You are an expert in dream interpretation, combining theories and insights from Carl Gustav Jung, Fritz Perls, Louisa Hay, Mauricio Puerta, and Alejandro Jodorowsky.
-  Analyze the following dream and provide an interpretation in the following sections:
+  Analyze the following dream and provide an interpretation in the following sections: (Always with tact and a human touch.)
   
-  1. **Interpretation**: A detailed and creative analysis.
+  1. **Interpretation**: A detailed and creative analysis.(In this section, you may elaborate coherently, well-informed, and appropriately according to the details of the dream provided.)
   2. **Symbols and Meanings**: Explain the key symbols and their possible meanings.
   3. **Questions for Reflection**: Formulate three introspective questions.
   4. **Practical Advice**: Offer a useful recommendation for daily life.

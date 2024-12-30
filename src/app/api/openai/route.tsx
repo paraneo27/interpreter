@@ -92,7 +92,7 @@ Sueño: "${dream}"
       JSON.stringify({ data: structuredResponse }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error al procesar la solicitud:', error);
     return new Response(
       JSON.stringify({ error: language === 'en' ? 'Internal server error.' : 'Error interno del servidor.' }),
