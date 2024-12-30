@@ -7,7 +7,7 @@ import translations from 'src/app/(components)/translations';
 
 export default function DreamForm() {
   const [dream, setDream] = useState(''); // Sueño ingresado por el usuario
-  const [response, setResponse] = useState<any | null>(null); // Respuesta estructurada del backend
+  const [response, setResponse] = useState<unknown | null>(null); // Respuesta estructurada del backend
   const [loading, setLoading] = useState(false); // Estado de carga
   const [error, setError] = useState<string | null>(null); // Mensajes de error
   const { language, toggleLanguage } = useLanguage(); // Estado y función del idioma
