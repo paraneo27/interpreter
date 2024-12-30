@@ -1,6 +1,9 @@
 {
  
+
+  
   "compilerOptions": {
+    "noImplicitAny": false,
     "target": "ES2020", // Objetivo adecuado para Next.js.
     "lib": [
       "dom",

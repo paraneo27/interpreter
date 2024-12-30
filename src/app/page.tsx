@@ -44,12 +44,12 @@ export default function Page() {
       <DreamyBackground />
 
       {/* Contenido principal */}
-      <div className="max-w-3xl mx-auto mt-6 relative z-10">
+      <div className="max-w-3xl mx-auto mt-4 relative z-10">
         <h1 className="text-4xl font-extrabold text-center text-white mb-2">INTERPRETER</h1>
         
         <DreamForm onSubmit={handleInterpretDream} loading={loading} />
 
-        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
 
         {response && <DreamResultsProps response={response} />}
       </div>

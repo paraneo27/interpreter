@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
+
 
 import { useState } from 'react';
 import DreamResultsProps from './DreamResultsProps';
@@ -7,10 +9,11 @@ import translations from 'src/app/(components)/translations';
 
 export default function DreamForm() {
   const [dream, setDream] = useState(''); // Sueño ingresado por el usuario
-  const [response, setResponse] = useState<unknown | null>(null); // Respuesta estructurada del backend
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [response, setResponse] = useState<any | null>(null); // Respuesta estructurada del backend
   const [loading, setLoading] = useState(false); // Estado de carga
   const [error, setError] = useState<string | null>(null); // Mensajes de error
-  const { language, toggleLanguage } = useLanguage(); // Estado y función del idioma
+  const { language, toggleLanguage } = useLanguage();
   const text = translations[language]; // Traducciones dinámicas según el idioma
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,6 +40,8 @@ export default function DreamForm() {
         body: JSON.stringify({ dream, language }), // Enviamos el idioma seleccionado al backend
       });
 
+      
+
       if (!res.ok) throw new Error(text.error);
 
       const data = await res.json();
@@ -50,9 +55,9 @@ export default function DreamForm() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-12 bg-white p-8 rounded-lg shadow-lg">
+    <div className="max-w-xl mx-auto mt-4 bg-white/90 p-8 rounded-lg shadow-lg">
       {/* Título */}
-      <h1 className="text-xl font-extrabold text-gray-800 mb-6 text-center">
+      <h1 className="text-xl font-extrabold text-gray-800 mb-4 text-center">
         {text.title}
       </h1>
 
@@ -60,8 +65,8 @@ export default function DreamForm() {
       <p className="text-gray-600 text-center mb-6">{text.description}</p>
 
       {/* Instrucciones */}
-      <div className="text-gray-600 text-sm leading-relaxed mb-6">
-        <ul className="list-disc list-inside space-y-2">
+      <div className="text-gray-600 text-sm leading-relaxed mb-4">
+        <ul className="list-disc list-inside space-y-1">
           {[
             { title: text.bullet1Title, desc: text.bullet1 },
             { title: text.bullet2Title, desc: text.bullet2 },
@@ -83,7 +88,7 @@ export default function DreamForm() {
           value={dream}
           onChange={(e) => setDream(e.target.value)}
           placeholder={text.placeholder}
-          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 border border-gray-400 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           rows={6}
         />
         <div className="space-y-4">

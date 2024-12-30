@@ -92,7 +92,8 @@ Sueño: "${dream}"
       JSON.stringify({ data: structuredResponse }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
-  } catch (error: unknown) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     console.error('Error al procesar la solicitud:', error);
     return new Response(
       JSON.stringify({ error: language === 'en' ? 'Internal server error.' : 'Error interno del servidor.' }),

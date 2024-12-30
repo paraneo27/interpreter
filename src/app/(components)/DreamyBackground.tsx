@@ -61,7 +61,7 @@ const DreamyBackground = () => {
             y1={`${connection.start.top}%`}
             x2={`${connection.end.left}%`}
             y2={`${connection.end.top}%`}
-            stroke="white"
+            stroke="yellow"
             strokeWidth="0.33"
             strokeOpacity="0.55"
             className="animate-constellation"
