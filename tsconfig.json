@@ -1,0 +1,42 @@
+{
+ 
+  "compilerOptions": {
+    "target": "ES2020", // Objetivo adecuado para Next.js.
+    "lib": [
+      "dom",
+      "esnext"
+    ], // Las bibliotecas necesarias para ESNext y DOM.
+    "allowJs": true, // Permitir archivos JavaScript en el proyecto.
+    "skipLibCheck": true, // Evitar comprobaciones de tipos en bibliotecas.
+    "strict": true, // Modo estricto para detección temprana de errores.
+    "noEmit": true, // No emitir archivos JavaScript.
+    "esModuleInterop": true, // Compatibilidad con módulos CommonJS y ESM.
+    "allowSyntheticDefaultImports": true, // Compatible con bibliotecas sin exportaciones por defecto.
+    "module": "ESNext", // Módulo compatible con Next.js.
+    "moduleResolution": "node", // Cambiar de "node16" a "node" para evitar conflictos.
+    "resolveJsonModule": true, // Permitir importar archivos JSON.
+    "isolatedModules": true, // Asegurar compatibilidad con ESM.
+    "jsx": "preserve", // Soporte moderno para JSX en React.
+    "incremental": true, // Habilitar recompilación incremental para mayor rendimiento.
+    "plugins": [
+      {
+        "name": "next" // Extensión de Next.js.
+      }
+    ],
+    "baseUrl": ".", // Base para las rutas absolutas.
+    "paths": {
+      "@/*": [
+        "./app/*"
+      ] // Alias para rutas absolutas hacia la carpeta app.
+    }
+  },
+  "include": [
+    "next-env.d.ts", // Tipos de Next.js.
+    "**/*.ts", // Archivos TypeScript.
+    "**/*.tsx", // Archivos React con TypeScript.
+    ".next/types/**/*.ts" // Tipos generados por Next.js.
+  ],
+  "exclude": [
+    "node_modules" // Excluir dependencias instaladas.
+  ]
+}
