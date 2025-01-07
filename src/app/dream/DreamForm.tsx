@@ -34,14 +34,12 @@ export default function DreamForm() {
     setResponse(null);
 
     try {
-      const res = await fetch('/api/openai', {
+      const res = await fetch('/api/dream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ dream, language }), // Enviamos el idioma seleccionado al backend
       });
-
       
-
       if (!res.ok) throw new Error(text.error);
 
       const data = await res.json();
@@ -98,7 +96,7 @@ export default function DreamForm() {
             className={`w-full py-3 text-white font-semibold rounded-lg transition ${
               loading
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
+                : 'bg-blue-900 hover:bg-blue-800'
             }`}
           >
             {loading ? text.loading : text.interpretButton}
@@ -106,7 +104,7 @@ export default function DreamForm() {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition"
+            className="w-full py-3 bg-purple-900 text-white font-semibold rounded-lg hover:bg-purple-800 transition"
           >
             {text.buttonLang}
           </button>

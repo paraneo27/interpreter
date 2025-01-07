@@ -40,3 +40,38 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    r: 2;
+    opacity: 0.8;
+  }
+  50% {
+    r: 4;
+    opacity: 1;
+  }
+}
+
+@keyframes line-dash {
+  0% {
+    stroke-dasharray: 1, 100;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 50, 100;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dasharray: 1, 100;
+    stroke-dashoffset: -50;
+  }
+}
+
+.points circle {
+  animation: pulse 1.5s infinite;
+}
+
+.lines line {
+  animation: line-dash 2s infinite linear;
+  stroke-linecap: round;
+}

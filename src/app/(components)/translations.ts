@@ -1,5 +1,43 @@
+// Definición del tipo `Language`
+export type Language = 'en' | 'es';
+
+// Definición del tipo `TranslationContent`
+export type TranslationContent = {
+  title: string;
+  description: string;
+  bullet1Title: string;
+  bullet1: string;
+  bullet2Title: string;
+  bullet2: string;
+  bullet3Title: string;
+  bullet3: string;
+  bullet4Title: string;
+  bullet4: string;
+  bullet5Title: string;
+  bullet5: string;
+  bullet6Title: string;
+  bullet6: string;
+  placeholder: string;
+  buttonLang: string;
+  interpretButton: string;
+  loading: string;
+  error: string;
+  errorEmpty: string;
+  errorLong: string;
+  prompt: string;
+  sections: {
+    interpretation: string;
+    symbols: string;
+    questions: string;
+    advice: string;
+    noContent: string;
+  };
+};
+
+// Traducciones
 const translations: Record<Language, TranslationContent> = {
   es: {
+    
     title: 'Instrucciones para Redactar Tu Sueño',
     description: 'Describe tu sueño y obtén una interpretación con fundamentos.',
     bullet1Title: 'Sé Breve y Claro',
@@ -22,11 +60,20 @@ const translations: Record<Language, TranslationContent> = {
     errorEmpty: 'El campo del sueño no puede estar vacío.',
     errorLong: 'El sueño es demasiado largo. Redúcelo a menos de 1000 caracteres.',
     prompt: `
-Eres un experto en interpretación de sueños, combinando las teorías y conocimientos de Carl Gustav Jung, Fritz Perls, Louisa Hay, Mauricio Puerta y Alejandro Jodorowsky. Analiza el siguiente sueño y proporciona una interpretación en las siguientes secciones:
-1. **Interpretación**: Un análisis detallado y creativo.
-2. **Símbolos y Significados**: Explica los símbolos clave y sus posibles significados.
-3. **Preguntas para Reflexionar**: Formula tres preguntas introspectivas.
-4. **Consejo Práctico**: Ofrece una recomendación útil para aplicar en la vida diaria.
+Eres un experto en interpretación de sueños. Analiza el siguiente sueño y responde en las siguientes secciones:
+
+### Interpretación
+Proporciona un análisis detallado y creativo del sueño.
+
+### Símbolos y Significados
+Identifica los símbolos clave y explica sus posibles significados.
+
+### Preguntas para Reflexionar
+Formula tres preguntas que inviten a la introspección.
+
+### Consejo Práctico
+Da una recomendación útil y aplicable en la vida cotidiana.
+
 Sueño: "{dream}"`,
     sections: {
       interpretation: 'Interpretación',
@@ -59,20 +106,30 @@ Sueño: "{dream}"`,
     errorEmpty: 'The dream field cannot be empty.',
     errorLong: 'The dream is too long. Please shorten it to less than 1000 characters.',
     prompt: `
-You are an expert in dream interpretation, combining theories and insights from Carl Gustav Jung, Fritz Perls, Louisa Hay, Mauricio Puerta, and Alejandro Jodorowsky. Analyze the following dream and provide an interpretation in the following sections:
-1. **Interpretation**: A detailed and creative analysis.
-2. **Symbols and Meanings**: Explain the key symbols and their possible meanings.
-3. **Questions for Reflection**: Formulate three introspective questions.
-4. **Practical Advice**: Offer a useful recommendation for daily life.
+You are an expert dream interpreter. Analyze the following dream and respond with the following sections:
+
+### Interpretation
+Provide a detailed and creative analysis of the dream.
+
+### Symbols and Meanings
+Identify the key symbols and explain their possible meanings.
+
+### Reflective Questions
+Formulate three questions that invite introspection.
+
+### Practical Advice
+Give a useful and applicable recommendation for daily life.
+
 Dream: "{dream}"`,
     sections: {
       interpretation: 'Interpretation',
       symbols: 'Symbols and Meanings',
-      questions: 'Questions for Reflection',
+      questions: 'Reflective Questions',
       advice: 'Practical Advice',
       noContent: 'No content available.',
     },
   },
+  
 };
 
 export default translations;
