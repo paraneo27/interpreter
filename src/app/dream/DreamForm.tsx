@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-
 import { useState } from 'react';
 import DreamResultsProps from './DreamResultsProps';
 import { useLanguage } from 'src/app/(components)/LanguageContext';
 import translations from 'src/app/(components)/translations';
 
+interface DreamResponse {
+  title: string;
+  description: string;
+  details: any; // Cambia esto a un tipo más específico si lo conoces
+}
+
 export default function DreamForm() {
   const [dream, setDream] = useState(''); // Sueño ingresado por el usuario
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [response, setResponse] = useState<any | null>(null); // Respuesta estructurada del backend
+  const [response, setResponse] = useState<DreamResponse | null>(null); // Respuesta estructurada del backend
   const [loading, setLoading] = useState(false); // Estado de carga
   const [error, setError] = useState<string | null>(null); // Mensajes de error
   const { language, toggleLanguage } = useLanguage();
@@ -39,11 +43,11 @@ export default function DreamForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ dream, language }), // Enviamos el idioma seleccionado al backend
       });
-      
+
       if (!res.ok) throw new Error(text.error);
 
-      const data = await res.json();
-      setResponse(data.data); // Recibe la respuesta estructurada del backend
+      const data: DreamResponse = await res.json();
+      setResponse(data); // Recibe la respuesta estructurada del backend
     } catch (error) {
       console.error(error);
       setError(text.error);
