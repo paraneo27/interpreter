@@ -77,7 +77,7 @@ const EmotionalDiagnosis: React.FC<EmotionalDiagnosisProps> = ({ language }) => 
       <h1 className="text-2xl font-bold text-center text-gray-800">
         {language === 'en' ? 'Analysis of Correspondence Between Illnesses and Emotions' 
         : 
-        'Análisis de Correspindencia entre enfermedades y emociones'}
+        'Análisis de Correspondencia entre enfermedades y emociones'}
       </h1>
       <p className="text-gray-700 text-center mt-2">
         {language === 'en'

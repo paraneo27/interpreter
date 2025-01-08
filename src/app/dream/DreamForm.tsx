@@ -9,7 +9,7 @@ import translations from 'src/app/(components)/translations';
 interface DreamResponse {
   title: string;
   description: string;
-  details: any; // Cambia esto a un tipo más específico si lo conoces
+  details: string; // 
 }
 
 export default function DreamForm() {
