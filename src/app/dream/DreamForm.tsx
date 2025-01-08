@@ -6,15 +6,15 @@ import DreamResultsProps from './DreamResultsProps';
 import { useLanguage } from 'src/app/(components)/LanguageContext';
 import translations from 'src/app/(components)/translations';
 
-interface DreamResponse {
+// Define el tipo de respuesta esperado
+interface Section {
   title: string;
-  description: string;
-  details: string; // 
+  content: string | string[];
 }
 
 export default function DreamForm() {
   const [dream, setDream] = useState(''); // Sueño ingresado por el usuario
-  const [response, setResponse] = useState<DreamResponse | null>(null); // Respuesta estructurada del backend
+  const [response, setResponse] = useState<Section[] | null>(null); // Respuesta estructurada del backend
   const [loading, setLoading] = useState(false); // Estado de carga
   const [error, setError] = useState<string | null>(null); // Mensajes de error
   const { language, toggleLanguage } = useLanguage();
@@ -44,13 +44,20 @@ export default function DreamForm() {
         body: JSON.stringify({ dream, language }), // Enviamos el idioma seleccionado al backend
       });
 
-      if (!res.ok) throw new Error(text.error);
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || text.error);
+      }
 
-      const data: DreamResponse = await res.json();
-      setResponse(data); // Recibe la respuesta estructurada del backend
-    } catch (error) {
-      console.error(error);
-      setError(text.error);
+      const data = await res.json();
+      if (!Array.isArray(data.data)) {
+        throw new Error(text.error);
+      }
+
+      setResponse(data.data); // Recibe la respuesta estructurada del backend
+    } catch (error: unknown) {
+      console.error('Error:', error);
+      setError(error instanceof Error ? error.message : text.error);
     } finally {
       setLoading(false);
     }
@@ -59,9 +66,7 @@ export default function DreamForm() {
   return (
     <div className="max-w-xl mx-auto mt-4 bg-white/90 p-8 rounded-lg shadow-lg">
       {/* Título */}
-      <h1 className="text-xl font-extrabold text-gray-800 mb-4 text-center">
-        {text.title}
-      </h1>
+      <h1 className="text-xl font-extrabold text-gray-800 mb-4 text-center">{text.title}</h1>
 
       {/* Descripción */}
       <p className="text-gray-600 text-center mb-6">{text.description}</p>
@@ -98,9 +103,7 @@ export default function DreamForm() {
             type="submit"
             disabled={loading}
             className={`w-full py-3 text-white font-semibold rounded-lg transition ${
-              loading
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-900 hover:bg-blue-800'
+              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-900 hover:bg-blue-800'
             }`}
           >
             {loading ? text.loading : text.interpretButton}
@@ -116,9 +119,7 @@ export default function DreamForm() {
       </form>
 
       {/* Mensajes de error */}
-      {error && (
-        <p className="text-red-500 mt-4 text-center font-medium">{error}</p>
-      )}
+      {error && <p className="text-red-500 mt-4 text-center font-medium">{error}</p>}
 
       {/* Resultado */}
       {response && (
